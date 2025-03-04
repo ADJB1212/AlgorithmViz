@@ -214,25 +214,6 @@ void draw_menu(AppContext *app) {
 
   SDL_Color labelColor = {200, 200, 255, 255};
 
-  SDL_Surface *sortLabelSurface =
-      TTF_RenderText_Solid(app->font, "Sorting Algorithms:", labelColor);
-  SDL_Texture *sortLabelTexture =
-      SDL_CreateTextureFromSurface(renderer, sortLabelSurface);
-
-  SDL_Rect sortLabelRect = {150, 120, sortLabelSurface->w, sortLabelSurface->h};
-
-  SDL_RenderCopy(renderer, sortLabelTexture, NULL, &sortLabelRect);
-
-  SDL_Surface *graphLabelSurface =
-      TTF_RenderText_Solid(app->font, "Graph Algorithms:", labelColor);
-  SDL_Texture *graphLabelTexture =
-      SDL_CreateTextureFromSurface(renderer, graphLabelSurface);
-
-  SDL_Rect graphLabelRect = {150, 150 + 5 * 50, graphLabelSurface->w,
-                             graphLabelSurface->h};
-
-  SDL_RenderCopy(renderer, graphLabelTexture, NULL, &graphLabelRect);
-
   draw_slider(renderer, app->font, 150, WINDOW_HEIGHT - 150, 300, 20,
               MIN_ARRAY_SIZE, MAX_ARRAY_SIZE, &app->arraySize,
               "Array Size / Graph Nodes:");
@@ -245,8 +226,4 @@ void draw_menu(AppContext *app) {
 
   SDL_FreeSurface(titleSurface);
   SDL_DestroyTexture(titleTexture);
-  SDL_FreeSurface(sortLabelSurface);
-  SDL_DestroyTexture(sortLabelTexture);
-  SDL_FreeSurface(graphLabelSurface);
-  SDL_DestroyTexture(graphLabelTexture);
 }
